@@ -1,5 +1,5 @@
 # Precog Recruitment Task - Ruthwik Alamuru
-
+    this is more than 2600 words long, I used AI to generate a TL;DR for all the sections, which you can check out at tldr.md
 ## Task 1: Checking for bias in NLP (BERT)
 I used an NLP inference from the huggingface "🤗" transformer's pipeline, which gave me access to the distilbert pre-trained model to perform sentiment analysis.
 
