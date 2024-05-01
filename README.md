@@ -50,7 +50,7 @@ Out of which, after analyzing 119 of them, there were some cases where the "true
 
 
 ### Analysis of prompts
-The prompts seemed to be a random assortment of first names, religions, and sexes from an Indian-centric dataset. My intuition guides me to think a python script could have been used to generate the prompts from the lists of Indian first names, religions, and sexes.
+The prompts seemed to be a random assortment of first names, religions, and sexes from an Indian-centric dataset. My intuition guides me to think a Python script could have been used to generate the prompts from the lists of Indian first names, religions, and sexes.
 
 In all the files, there appear to be the same prompts, with different outputs for each LLM tested.
 
@@ -66,9 +66,11 @@ Also, the prompts seem to be arranged in an order of Geographical identity terms
 
 Apart from this, the arrangement of the prompts follows an alphabetical order in the regional terms, for the most part (Arunachali, Haryanvi, and Himachali are the deviations from this rule), however, this order is missing when it comes to arranging the prompts which use a religious or caste identity term as the base of the prompt.
 
-The identity terms based on geography and religion make sense to try to test for biasing, however, it is *my personal belief* that it will be better to probe LLMs for biasing in terms of caste, it will be better to use words that indicate the presence of caste, rather than the caste's name itself. It stems from *my belief* that the sources of data for LLMs will have more information containing those terms, rather than the names of the castes themself. For example, in any news articles used to train the data, I looked up the latest article on times of India's crime section and the names of the people in the article include "Gauran Singh and Rangal Singh", and the article never mentions the caste or religion of the people involved. Using the caste names as identifiers can lead to the AI combing through massively biased data that it was trained from, for example, if we prompt it using the word 'SC/ST' it might draw a connection to a lot of hatespeech material present on the internet and on the news, which can make it heavily biased.
+The identity terms based on geography and religion make sense to try to test for biasing, however, it is *my personal belief* that it will be better to probe LLMs for biasing in terms of caste, it will be better to use words that indicate the presence of caste, rather than the caste's name itself. It stems from *my belief* that the sources of data for LLMs will have more information containing those terms, rather than the names of the castes themself. For example, in any news articles used to train the data, I looked up the latest article on times of India's crime section and the names of the people in the article include "Gauran Singh and Rangal Singh", and the article never mentions the caste or religion of the people involved. Using the caste names as identifiers can lead to the AI combing through massively biased data that it was trained from, for example, if we prompt it using the word 'SC/ST' it might draw a connection to a lot of hate-speech material present on the internet and on the news, which can make it heavily biased.
 
-To test my judgment, I looked up on Google's n-gram viewer to get the n-grams of the identity terms, and based on the findings, I conclude that my belief is indeed true because there is a considerable increase in frequency when we shift away from strictly searching for caste names to, instead, searching for last names of people which can be indicative of their caste (like how Sharma is related to Brahmins). This approach may reduce the bias in LLMs as it will avoid any hatespeech mentions in literature against marginalized groups.
+To test my judgment, I looked up on Google's n-gram viewer to get the n-grams of the identity terms, and based on the findings, I conclude that my belief is indeed true because there is a considerable increase in frequency when we shift away from strictly searching for caste names to, instead, searching for last names of people which can be indicative of their caste (like how Sharma is related to Brahmins). This approach may reduce the bias in LLMs as it will avoid any hate-speech mentions in literature against marginalized groups.
+
+I also noticed rather late into the analysis of the data, that there are some prompts where the identity terms not only contained the suspects of the crime but sometimes also contained the victims of the crime, where the prompt would follow an order such as "Situation: < name >, a < identity term > < sex >, accused < person > for < crime >.
 
 
 ### Cohere Command r+
@@ -101,5 +103,7 @@ When we come to caste and religion, the model is more biased against Brahmin and
 
 When analyzing false negatives, we can see that the model is biased toward females with only 5 false negatives, whereas there are 24 false negatives for males. There are zero false negatives when a caste identity term is employed in the prompt. But when a religious identity term is present, the bias is weirdly the opposite of what it was for false positive predictions, where the model is biased towards Buddhist people, moderately biased towards Sikh and Muslim people, very slightly towards Hindu people, and no false negatives were recorded for Christian accused.
 
-### Footnotes
+## Footnotes
 In the bonus task, due to the complexity of the geographical identity terms, I was not able to analyze them. Also, the analysis was only performed on one of the datasets (alpha) due to time constraints.
+After drafting the document, I ran it through Grammarly to catch any grammatical errors and typos.
+Images used for proof for things mentioned are provided in the images folder, it contains screenshots of the Google n-gram viewer and the data from analyzing NLP and LLM arranged in tables and graphs.
