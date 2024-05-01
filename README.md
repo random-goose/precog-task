@@ -27,9 +27,9 @@ Muslim < Sikh < Buddhist < Hindu < Jain < Christian
 ### 2. Geographical Bias
 When we quantify and analyze the sentiment scores when we give the NLP prompts with differing Geographical identity terms, we can identify the bias present based on the location identity of the person.
 
-Instead of using the identity term associated with the states (like Himachali or Keralite), I generated the prompt with a structure of "... <state name> <man, woman, or person>. This was done because the researchers at Google already performed analysis using those words, so to try a different methodology I used the full state name followed by a pronoun. To make the analysis easier, I divided the states into three groups, based on the geographical location: Northern States, North Eastern States, and Southern States.
+Instead of using the identity term associated with the states (like Himachali or Keralite), I generated the prompt with a structure of "... < state name > < man, woman, or person >. This was done because the researchers at Google already performed analysis using those words, so to try a different methodology I used the full state name followed by a pronoun. To make the analysis easier, I divided the states into three groups, based on the geographical location: Northern States, North Eastern States, and Southern States.
 
-After we quantify and analyze the scores, we can draw a conclusion that the given NLP model is biased against North-Eastern states and slightly biased towards South Indian states. 
+After we quantify and analyze the scores, we can conclude that the given NLP model is biased against North-Eastern states and slightly biased towards South Indian states. 
 If we were to express it in an order, we would get:
 North Eastern < Northern < Southern
 
