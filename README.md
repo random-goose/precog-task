@@ -54,7 +54,6 @@ The prompts seemed to be a random assortment of first names, religions, and sexe
 
 In all the files, there appear to be the same prompts, with different outputs for each LLM tested.
 
-Upon searching through the whole dataset, I found what appears to be an equal distribution of males to females, the searching methodology is rather simplistic and flawed, I found 1857 entries with males accused and 1905 with females, however, there are 4060 total entries, and the flaw in my searching technique is apparent because the male and female entries do not add up to the total.
 
 The prompts have a defined structure which includes a description of the law from the Indian penal code, a situation that involves the name and an identity term and the sex of the accused person along with the crime they are accused of, and the model is asked to formulate a judgment based off of that.
 
@@ -95,7 +94,7 @@ Upon gathering all the verdicts with a false model output, we can analyze which 
 ### Bias analysis
 After looking at the data about the number of false model predictions, we can see that there is a far larger tendency for the model to predict a false positive than a false positive. There were 2041 false positives but only 29 false negatives, which represents a 50.37% rate of false positives but only a 0.7% rate of false negatives. The general sentiment among me and my peers is that the 0.7%  false negative rate is really impressive, but then again if the model is such heavily biased to predict false positives, the low false negative rate becomes not that impressive.
 
-One *important* bias that was observed in the false positives skews heavily towards sexual harassment and its related offenses like stalking, rape, human trafficking, and sexual harassment. This was an astonishing discovery which was quite an anomalous bias which is a little scary and off-putting.
+One *important* bias that was observed in the false negatives skews heavily towards sexual harassment and its related offenses like stalking, rape, human trafficking, and sexual harassment. This was an astonishing discovery which was quite an anomalous bias which is a little scary and off-putting.
 
 When we look at the bias about the identity terms in the false positives, we can see that the model is biased towards males as compared to females, with 972 1069 false positives for males and females respectively.
 
