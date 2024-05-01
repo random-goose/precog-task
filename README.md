@@ -37,12 +37,14 @@ North Eastern < Northern < Southern
 When I quantified the bias present in the NLP model on the axis of caste (by using the last names of people rather than the names of the caste themself) we can look at the data to draw conclusions based on the data gathered.
 Based on the data, there does not appear to be a lot of bias, but the bias that does exist is rather sporadic. When the data is arranged in an order, we can observe the order is: Vaisya < Sudra < Kshatriya < Bramhin.
 
-## Task 2:Analyzing Prompts and Replies for Fairness in Legal AI
+
+
+## Task 2: Analyzing Prompts and Replies for Fairness in Legal AI
 
 ### Prologue
-Before getting to analyzing the prompts, I would just try to put the fact that the predictions made by this model have a *large* tendency towards predicting false positives, out of the 4060 verdicts present, there are a total of 20300 predictions, in which 10025 are false positives, where the true output is a no, but the model predicted a yes.
+Before getting to analyzing the prompts, I would just try to put the fact that the predictions made by this model have a *large* tendency towards predicting false positives, out of the 4060 verdicts present, out of which, 2041 were false positives, where the true output is a no, but the model predicted a yes.
 
-That represents a 49.384% rate of false positives. When analyzing the verdicts where all five of the predictions were false positives, a rather high 1002 verdicts were found. Note: this is only on the first (alpha) dataset
+That represents a 50.37% rate of false positives. When analyzing the verdicts where all five of the predictions were false positives, a rather high 1002 verdicts were found. Note: this is only on the first (alpha) dataset.
 
 Out of which, after analyzing 119 of them, there were some cases where the "true output" was false, such as the case of Elizabeth, a Christian woman who partook in a bank robbery. The true output was labeled as a no, even though it should have been a yes.
 
@@ -82,3 +84,22 @@ This is the output I got from Cohere's cmd r+ model after I zero-shot prompted i
     The law under Section 146 IPC specifically addresses instances of physical force and violence employed by an unlawful assembly. In Bhavana's case, while her actions may constitute a cybercrime, they do not involve force, violence, or the presence of an unlawful assembly. Her actions are confined to the electronic realm and do not involve physical coercion or a group pursuing a common unlawful objective.
 
     Answer: No.
+
+## Bonus Task
+To probe bias in the llm output in a legal setting, I first started by gathering the outputs which did not match the "true output". This consisted of two different groups: False Positives, and False negatives. A False Positive is when the true output is a no, but the model predicted a yes, and a false negative is when the true output is a yes, but the model predicted a no. Because some variation is expected from the current state of llms, the data contains five different predictions for each case, to determine false outputs, I only considered the outputs where the majority (at least 3) of the predictions were false. 
+
+Upon gathering all the verdicts with a false model output, we can analyze which identity terms the model tends to predict more false positives and negatives. To get the false predictions and their associated identity terms, we can loop through the whole dictionary and if the true output is a no, we search through the predictions to see if we can find the sub-string "is applicable" occurs more than twice, and if it does, we can perform a search operation through the prompt using regular expressions to gather the words which succeed the phrase "Situation: (name), (identity terms), ..". Once we isolate the identity terms, we can increment the count of the selected identity (like count of Bramhin associated false predictions or count of female associated false prediction). With the count with us, we can export the data to visualize it for easier analysis.
+
+### Bias analysis
+After looking at the data about the number of false model predictions, we can see that there is a far larger tendency for the model to predict a false positive than a false positive. There were 2041 false positives but only 29 false negatives, which represents a 50.37% rate of false positives but only a 0.7% rate of false negatives. The general sentiment among me and my peers is that the 0.7%  false negative rate is really impressive, but then again if the model is such heavily biased to predict false positives, the low false negative rate becomes not that impressive.
+
+One *important* bias that was observed in the false positives skews heavily towards sexual harassment and its related offenses like stalking, rape, human trafficking, and sexual harassment. This was an astonishing discovery which was quite an anomalous bias which is a little scary and off-putting.
+
+When we look at the bias about the identity terms in the false positives, we can see that the model is biased towards males as compared to females, with 972 1069 false positives for males and females respectively.
+
+When we come to caste and religion, the model is more biased against Brahmin and Kshatriya people with 38 false predictions each, OBS and SC/ST people are neutral, while the model is biased towards Shudra and Vaishya people with 26 and 24 predictions respectively. In terms of religious bias, the model is biased against Buddhist and Sikh people, with 52 and 50 false positives, neutral towards Muslim people, and biased towards Christian and Hindu people.
+
+When analyzing false negatives, we can see that the model is biased toward females with only 5 false negatives, whereas there are 24 false negatives for males. There are zero false negatives when a caste identity term is employed in the prompt. But when a religious identity term is present, the bias is weirdly the opposite of what it was for false positive predictions, where the model is biased towards Buddhist people, moderately biased towards Sikh and Muslim people, very slightly towards Hindu people, and no false negatives were recorded for Christian accused.
+
+### Footnotes
+In the bonus task, due to the complexity of the geographical identity terms, I was not able to analyze them. Also, the analysis was only performed on one of the datasets (alpha) due to time constraints.
