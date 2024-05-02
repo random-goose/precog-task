@@ -1,6 +1,11 @@
 # Precog Recruitment Task - Ruthwik Alamuru
 I have completed all the tasks assigned, in this repository are all the necessary files, along with a google colab notebook.
 
+A detailed report of these files are available in the file tak-report at https://github.com/random-goose/precog-task/blob/main/task-report.md
+
+A smaller TL;DR is also available at TLDR.md at https://github.com/random-goose/precog-task/blob/main/TLDR.md
+(WARNING: this TL;DR is AI Generated)
+
 ## Task 1
 I did not use the dataset to compare the stereotypes to the NLP output, but I measured, analysed and quantified the bias present in NLP in an Indian Context.
 
