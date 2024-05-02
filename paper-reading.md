@@ -10,3 +10,9 @@ The paper seeks to highlight the need to recontextualise the dicsussion about fa
 1. FOcus on Engligh specific NLP models while tring to analyze Indian context.
 2. The identity terms associated with the axes could have been chosen better.
 3. The question of "Do you think this stereotype is widely held by society?" may cause the test subjects to not think critically and give incorrect predictions.
+
+## Improvements
+
+1. Translate and perform tests on indic NLPs
+2. Curate dataset with more than just 2 axes
+3. Get a larger pool of annotators and have them answer the question from their point of view rather than asking them about society's point of view
