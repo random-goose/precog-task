@@ -30,20 +30,37 @@ The data is available on the spreadsheet at: https://github.com/random-goose/pre
 (go to the sheet marked LLM)
 
 Structure of the task report:
+
     Task 1: Checking for bias in NLP (BERT)
+
         1. Religious Bias
+
         2. Geographical Bias
+
         3. Caste Bias
+
     Task 2: Analyzing Prompts and Replies for Fairness in Legal AI
+
         Prologue
+
         Analysis of prompts
+
         Cohere Command r+
+
     Bonus Task
+
         Bias analysis
+
     Paper Reading
+
         Summary
+
         Report
+
         Strengths
+
         Weaknesses
+
         Improvements
+        
     Footnotes
